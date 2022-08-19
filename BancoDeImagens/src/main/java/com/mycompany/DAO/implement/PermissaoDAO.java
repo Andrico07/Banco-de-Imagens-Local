@@ -14,7 +14,7 @@ import com.mycompany.model.Permissao;
 import com.mycompany.model.Usuario;
 
 public class PermissaoDAO {
-
+    
 	public static void createTablePermissoes() throws SQLException {
 		var query = "CREATE TABLE IF NOT EXISTS Permissao (" + "id INTEGER PRIMARY KEY AUTOINCREMENT, " + "id_usuario INTEGER NOT NULL REFERENCES Usuario (id), " + "visualizar INT DEFAULT 0, " + "path varchar not null," + "compartilhar INT DEFAULT 0," + "aplicar_Filtro INT DEFAULT 0,"
 				+ "excluir INT DEFAULT 0 " + ")";
@@ -250,7 +250,7 @@ public class PermissaoDAO {
 				p.setVisualizar( rs.getBoolean( 4 ) );
 				p.setPath( rs.getString( 5 ) );
 				p.setAplicarFiltro( rs.getBoolean( 6 ) );
-
+                                permissoes.add(p);
 			}
 
 			return permissoes;

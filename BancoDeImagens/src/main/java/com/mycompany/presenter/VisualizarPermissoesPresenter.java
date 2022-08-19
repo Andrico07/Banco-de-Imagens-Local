@@ -30,7 +30,7 @@ public class VisualizarPermissoesPresenter {
 		desktop.add( visualizarView );
 		try {
 			permissoes = permissaoDAO.getByUsuario( usuario );
-			loadTable();
+			loadTable(usuario);
 		} catch ( Exception e ) {
 			JOptionPane.showMessageDialog( visualizarView, "Erro ao carregar permissoes" + e.getMessage() );
 			visualizarView.dispose();
@@ -88,7 +88,7 @@ public class VisualizarPermissoesPresenter {
 		visualizarView.dispose();
 	}
 
-	private void loadTable() throws Exception {
+	private void loadTable(Usuario usuario) throws Exception {
 
 		visualizarView.getjTable().setSelectionMode( ListSelectionModel.SINGLE_SELECTION );
 
@@ -101,9 +101,10 @@ public class VisualizarPermissoesPresenter {
 		};
 
 		tabela.setNumRows( 0 );
+                
 
 		for( Permissao p : permissoes )
-			tabela.addRow( new Object[]{ p.getId(), p.getUsuario().getLogin(), p.getPath(), p.isVisualizar(), p.isExcluir(), p.isCompartilhar(), p.isAplicarFiltro() } );
+			tabela.addRow( new Object[]{ p.getId(), usuario.getLogin(), p.getPath(), p.isVisualizar(), p.isExcluir(), p.isCompartilhar(), p.isAplicarFiltro() } );
 
 		visualizarView.getjTable().setModel( tabela );
 	}

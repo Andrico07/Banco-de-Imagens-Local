@@ -32,6 +32,7 @@ public class VisualizarImagemPresenter {
     private void init(JDesktopPane desktop, Imagem imagem) {
 
         visualizarView = new VisualizarImagemView();
+        permissaoDAO = new PermissaoDAO();
         desktop.add(visualizarView);
         Image dImagem = imagem.getImagem().getScaledInstance(visualizarView.getLblImagem().getWidth(), visualizarView.getLblImagem().getHeight(), Image.SCALE_SMOOTH);
         visualizarView.getLblImagem().setIcon(new ImageIcon(dImagem));

@@ -17,6 +17,7 @@ public class Imagem extends ImagemComponente {
                 throw new IllegalArgumentException("Informe um arquivo JPG");
             }
             imagem = ImageIO.read(new File(caminhoArquivo));
+            this.path = caminhoArquivo;
 
         } catch (IOException e) {
             throw new IOException("Falha: Não foi possivel abrir a imagem \n" + e.getMessage());
